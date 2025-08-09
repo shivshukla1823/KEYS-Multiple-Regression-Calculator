@@ -1,31 +1,27 @@
-def DALYs():
-    hmod = float(-49.74)
-    rmod = float(-89.90)
-    pmod = float(-35.31)
-    while True:
-        try:
-            nh = int(input('Number of Graduates as Physicians: '))
-            break
-        except ValueError:
-            print('Invalid input. Please enter a number')
-    while True:
-        try:
-            nr = int(input('Number of Graduates as Researchers: '))
-            break
-        except ValueError:
-            print('Invalid input. Please enter a number')
-    while True:
-        try:
-            np = int(input('Number of Graduates as Drug Developers: '))
-            break
-        except ValueError:
-            print('Invalid input. Please enter a number')
-    daly_h = float(hmod*nh)
-    daly_r = float(rmod*nr)
-    daly_p = float(pmod*np)
-    daly = daly_h + daly_r + daly_p
-    print(f'Estimated DALYs Avoided from Physicians: {daly_h:.2f}')
-    print(f'Estimated DALYs Avoided from Researchers: {daly_r:.2f}')
-    print(f'Estimated DALYs Avoided from Drug Developers: {daly_p:.2f}')
-    print(f'Estimated Total DALYs Avoided: {daly:.2f}')
-DALYs()
+import streamlit as st
+
+st.title("DALYs Reduction Estimator")
+
+st.header("Enter Number of Graduates")
+
+nh = st.number_input("Physicians", min_value=0, step=1)
+nr = st.number_input("Researchers", min_value=0, step=1)
+np = st.number_input("Drug Developers", min_value=0, step=1)
+
+# Coefficients
+hmod = -49.74
+rmod = -89.90
+pmod = -35.31
+
+# Calculations
+daly_h = hmod * nh
+daly_r = rmod * nr
+daly_p = pmod * np
+total = daly_h + daly_r + daly_p
+
+st.header("Estimated DALYs Avoided")
+st.write(f"Physicians: {daly_h:,.2f}")
+st.write(f"Researchers: {daly_r:,.2f}")
+st.write(f"Drug Developers: {daly_p:,.2f}")
+st.subheader(f"**Total: {total:,.2f} DALYs avoided**")
+
