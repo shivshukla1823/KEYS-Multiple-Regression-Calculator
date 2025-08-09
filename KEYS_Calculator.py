@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("DALYs Reduction Estimator by KEYS Graduates")
+st.title("DALYs Reduction Estimate by KEYS Graduates")
 
 st.header("Enter Number of Graduates")
 
@@ -24,5 +24,6 @@ st.write(f"Physicians: {daly_h:,.2f}")
 st.write(f"Researchers: {daly_r:,.2f}")
 st.write(f"Drug Developers: {daly_p:,.2f}")
 st.subheader(f"**Total: {total:,.2f} DALYs avoided**")
+
 
 
